@@ -1,0 +1,22 @@
+.container {
+    min-width: 1600px;
+    min-height: 1200px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #04AA6D;
+    padding: 10px;
+}
+
+nav {
+    position:absolute;
+    bottom:0;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: #04AA6D;
+}
+
+table {
+    border-collapse: collapse;
+}
