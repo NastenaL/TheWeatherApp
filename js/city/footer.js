@@ -23,7 +23,11 @@ let createFooterDiv = (currentCity) => {
     let pressure = createTile("img/pressure.png", "Dew Point", currentCity.pressure);
     footer.appendChild(pressure);
 
-    //let moreButton = 
+    let moreButton = document.createElement('button');
+    moreButton.id = currentCity.id;
+    moreButton.textContent = "More";
+    footer.appendChild(moreButton);
+
     return footer;
 }
 
@@ -57,7 +61,6 @@ let createTileContainer = () => {
     tile.style.width = '150px';
     tile.style.background = '#04AA6D';
     tile.style.textAlign = 'center';
-    //tile.style.display = 'table-cell';
     tile.style.float = 'left';
     tile.style.marginRight = '10px';
     tile.style.marginBottom = '10px';

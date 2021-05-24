@@ -60,7 +60,6 @@ let createFavoriteButton = (item) => {
     addToFavorites.className = "favorite";
     addToFavorites.textContent = "Add to favorites";
     
-
     if(item['isFavorite'])
     {
         addToFavorites.style.display = 'none';

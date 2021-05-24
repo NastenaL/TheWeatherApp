@@ -1,5 +1,4 @@
 const ft = new Fetch();
-const currentCity = new City();
 const container = document.getElementById("container");
 
 class RenderCityPage {
@@ -7,17 +6,17 @@ class RenderCityPage {
     constructor(){
     }
 
-    static render(id){
+    static async render(id){
         container.innerHTML = "";
         let city = searchResults.find(item => item.city.id === id);
+        const currentCity = new City();
+
+        let data = await ft.getCurrent(city);
+
+        currentCity.setItem(data);
+        currentCity.id = id;
+        currentCity.isFavorite = city.isFavorite;
         
-        ft.getCurrent(city).then((data) => {
-            console.log(data);
-            currentCity.setItem(data);
-            currentCity.id = id;
-            currentCity.isFavorite = city.isFavorite;
-        }); 
-        console.log(currentCity);
         let topDiv = createTop(currentCity);
         container.appendChild(topDiv);
 
