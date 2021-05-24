@@ -24,7 +24,7 @@ class RenderCityPage {
         let centerDiv = createCenter(currentCity);
         container.appendChild(centerDiv);
 
-        let footer = createFooter(currentCity);
+        let footer = createFooterDiv(currentCity);
         container.appendChild(footer);
     }
 }
@@ -68,30 +68,4 @@ let createCenter = (currentCity) => {
     centerDiv.appendChild(description);
     centerDiv.appendChild(weatherIcon);
     return centerDiv;
-}
-
-let createFooter = (currentCity) => {
- 
-    let footer = document.createElement('div');
-    footer.id = "footer";
-
-    let feelsLike = document.createElement('div');
-    feelsLike.id = "feelsLike";
-    feelsLike.style.height = '150px';
-    feelsLike.style.width = '150px';
-    feelsLike.style.background = '#04AA6D';
-    feelsLike.style.textAlign = 'center';
-
-    let img = document.createElement('img');
-    img.src = "img/thermometer.png";
-    img.style.align = 'center'; 
-    feelsLike.appendChild(img);
-    let title = document.createElement('h6');
-    title.innerText = "Feels like";
-    feelsLike.appendChild(title);
-    let temperature = document.createElement('h4');
-    temperature.innerText = currentCity.feelsLike;
-
-    footer.appendChild(feelsLike);
-    return footer;
 }
