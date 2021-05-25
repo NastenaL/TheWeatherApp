@@ -1,5 +1,7 @@
 let searchResults = [];
-const searchRenderer = new RenderSearchPage();
+const searchRenderer = new SearchPage();
+const MAX_ITEM_COUNT = 15;
+
 searchRenderer.renderForm();
 searchRenderer.renderTable(searchResults);
 
@@ -9,7 +11,6 @@ function loadCities(list) {
     cities = list;
 }
 
-const showNumberItems = 15;
 let cityName = document.getElementById("cityName");
 
 let debounce = (callback, wait) => {
@@ -29,20 +30,18 @@ cityName.addEventListener('input', debounce(() => {
 let onSearchByName = () => {
    searchResults = [];
    if(cityName.value.length >= 1){
-    let searchedCities = cities.filter(city => city.name.includes(cityName.value));
-    setResult(searchedCities);
-    let partialSearchResults = searchResults
-    .sort((item1, item2) => item1.city.name > item2.city.name ? 1 : (item1.city.name == item2.city.name ? 0 : -1))
-    .filter((item, idx) => idx <= showNumberItems);
+        let searchedCities = cities.filter(city => city.name.includes(cityName.value));
+        setResult(searchedCities);
+        let partialSearchResults = searchResults
+            .sort((item1, item2) => item1.city.name > item2.city.name ? 1 : (item1.city.name == item2.city.name ? 0 : -1))
+            .slice(0, MAX_ITEM_COUNT);
+
+        searchRenderer.renderTable(partialSearchResults);
  
-     partialSearchResults.forEach(item => item.city.name = item.city.name.toLowerCase());
- 
-     searchRenderer.renderTable(partialSearchResults);
- 
-     let searchForm = document.getElementById('searchForm');
-     searchForm.addEventListener('submit', function() {
-         onSearchByName();
-     });
+        let searchForm = document.getElementById('searchForm');
+        searchForm.addEventListener('submit', function() {
+            onSearchByName();
+        });
    }
 }
 

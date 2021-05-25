@@ -15,10 +15,7 @@ id;
 isFavorite;
 iconCode;
 
-    constructor() {
-    }
-
-    setItem(data){
+    constructor(data) {
         this.localTime = convertedTimeZone(data.timezone_offset);
         this.longitude = data.lon;
         this.latitude = data.lat;
@@ -32,18 +29,14 @@ iconCode;
         this.pressure = data.current.pressure; 
         this.dewPoint = data.current.dew_point;
         this.iconCode = data.current.weather[0].icon;
-        return this;
     }
 }
 
 let convertedTimeZone = (timezone_offset) => {
     let timestamp = Date.now();
+    const abs = Math.abs(timezone_offset);
 
-    if (timezone_offset > 0) {
-        timestamp += Math.abs(timezone_offset);
-    } else {
-        timestamp -= Math.abs(timezone_offset);
-    }
+    timestamp = timezone_offset > 0 ? timestamp + abs : timestamp - abs; 
     return timestampToDateFormat(timestamp);
 }
 

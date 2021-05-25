@@ -36,8 +36,11 @@ let createHeader = () => {
 
 let createRow = (item) => {
     let row = document.createElement('tr');
+    
+    row.addEventListener('click', function() {
+        CityOverviewPage.render(item.city.id);
+    });
 
-    row.setAttribute('onclick', 'RenderCityPage.render(' + item.city.id +')');
     row.className = 'table-row';
 
     ['name', 'country', 'state'].forEach(prop => {
