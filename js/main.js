@@ -13,19 +13,11 @@ function loadCities(list) {
 
 let cityName = document.getElementById("cityName");
 
-let debounce = (callback, wait) => {
-    let timeout;
-    return (...args) => {
-        const context = this;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => callback.apply(context, args), wait);
-    };
-}
-
-cityName.addEventListener('input', debounce(() => {
-    onSearchByName();
-}, 500)
-);
+cityName.addEventListener('input', (event) => {
+    debounce().init().then(() => {
+        onSearchByName()
+    })
+});
 
 let onSearchByName = () => {
    searchResults = [];
