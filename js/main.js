@@ -25,7 +25,15 @@ let onSearchByName = () => {
         let searchedCities = cities.filter(city => city.name.includes(cityName.value));
         setResult(searchedCities);
         let partialSearchResults = searchResults
-            .sort((item1, item2) => item1.city.name > item2.city.name ? 1 : (item1.city.name == item2.city.name ? 0 : -1))
+            .sort((item1, item2) => {
+                const {
+                    city: {name: cityName1}
+                } = item1;
+                const {
+                    city: {name: cityName2}
+                } = item2;
+                return cityName1 > cityName2 ? 1 : cityName1 == cityName2 ? 0 : -1;
+            })
             .slice(0, MAX_ITEM_COUNT);
 
         searchRenderer.renderTable(partialSearchResults);
