@@ -4,7 +4,11 @@ class FavoriteStorage {
         this.favorites = new Storage();
     }
 
-    addItem(items){
-        favorites.saveTo('favorites', JSON.stringify(items));
+    get(){
+        return favorites.getItem('favorites');
+    }
+
+    update(items){
+        favorites.setItem('favorites', JSON.stringify(items));
     }
 }

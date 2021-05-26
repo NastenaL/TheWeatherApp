@@ -17,7 +17,7 @@ class TileFactory {
         let tiles = [];
 
         items.forEach(item => {
-            let feelsLike = this.createTileContainer();
+            let container = this.createTileContainer();
 
             let icon = this.createIcon(item.icon); 
         
@@ -27,10 +27,10 @@ class TileFactory {
             let value = document.createElement('h4');
             value.innerText = item.value;
     
-            feelsLike.appendChild(icon);
-            feelsLike.appendChild(title);
-            feelsLike.appendChild(value);
-            tiles.push(feelsLike);
+            container.appendChild(icon);
+            container.appendChild(title);
+            container.appendChild(value);
+            tiles.push(container);
         });
 
         return tiles;

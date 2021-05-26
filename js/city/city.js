@@ -1,44 +1,54 @@
 class City{
-localTime;
+
 longitude; 
 latitude;
-timezone;
 title;
 subtitle;
 feelsLike;
 humidity;
 uvIndex;
-visibility;
+_visibility;
 pressure;
 dewPoint;
 id;
 iconCode;
+timezone_offset;
 
     constructor(data, id) {
         this.id = id;
-        this.localTime = convertedTimeZone(data.timezone_offset);
+        this.timezone_offset = data.timezone_offset;
         this.longitude = data.lon;
         this.latitude = data.lat;
-        this.timezone = `GTM ${data.timezone_offset / 3600}`;
         this.title = data.current.weather[0].main + ", " + data.current.weather[0].description;
         this.subtitle = data.current.wind_deg;
-        this.feelsLike = data.current.feels_like;
-        this.humidity = data.current.humidity;
+        this.feelsLike = `${data.current.feels_like} ℃`;
+        this.humidity = `${data.current.humidity} %`;
         this.uvIndex = data.current.uvi;
-        this.visibility = data.current.visibility;
-        this.pressure = data.current.pressure; 
-        this.dewPoint = data.current.dew_point;
+        this._visibility = data.current.visibility;
+        this.pressure = `${data.current.pressure} mb`; 
+        this.dewPoint = `${data.current.dew_point} ℃`;
         this.iconCode = data.current.weather[0].icon;
+    }
+
+    get localTime(){
+        let timestamp = Date.now();
+        const abs = Math.abs(this.timezone_offset);
+
+        timestamp = this.timezone_offset > 0 ? timestamp + abs : timestamp - abs; 
+        return timestampToDateFormat(timestamp);
+    }
+
+    get timezone(){
+        let gtm = this.timezone_offset / 3600;
+        if(gtm > 0) gtm = '+' + gtm;
+        return `GTM ${gtm}`;
+    }
+
+    get visibility(){
+        return `${this._visibility / 1000} km`;
     }
 }
 
-let convertedTimeZone = (timezone_offset) => {
-    let timestamp = Date.now();
-    const abs = Math.abs(timezone_offset);
-
-    timestamp = timezone_offset > 0 ? timestamp + abs : timestamp - abs; 
-    return timestampToDateFormat(timestamp);
-}
 
 function timestampToDateFormat(timestamp){
     let date = new Date(timestamp * 1000);

@@ -9,9 +9,10 @@ class CityOverviewPage {
         let city = searchResults.find(item => item.city.id === id);
 
         let data = await ft.getCurrent(city);
+        console.log(data);
         const currentCity = new City(data, id);
         
-        [createTop, createCenter, createFooterDiv].forEach(fn =>{
+        [createTop, createCenter, createFooter].forEach(fn =>{
             const sectionContainer = fn(currentCity);
             container.appendChild(sectionContainer);
         });
@@ -50,17 +51,23 @@ let createCenter = (currentCity) => {
 
     let weatherIcon = document.createElement('img');
     weatherIcon.src = `http://openweathermap.org/img/wn/${currentCity.iconCode}@2x.png`;
-    let description = document.createElement('h3');
-    description.innerText = `Description
-    Title: ${currentCity.title}
-    Subtitle: `;
-    centerDiv.appendChild(description);
+
+    let title = document.createElement('h3');
+    title.innerText = `Description
+    Title: ${currentCity.title},`;
+
+    let subTitle = document.createElement('h3');
+    subTitle.innerText += `Subtitle: Low 10, Wind west at 11.124 kph`;
+
+    centerDiv.appendChild(title);
     centerDiv.appendChild(weatherIcon);
+    centerDiv.appendChild(subTitle);
+
     return centerDiv;
 }
 
 
-let createFooterDiv = (currentCity) => {
+let createFooter = (currentCity) => {
  
     let footer = document.createElement('div');
     footer.id = "footer";
