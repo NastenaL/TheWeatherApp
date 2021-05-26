@@ -1,14 +1,13 @@
 class FavoriteStorage {
+  constructor() {
+    this.favorites = new Storage();
+  }
 
-    constructor(){
-        this.favorites = new Storage();
-    }
+  get() {
+    return favorites.getItem("favorites");
+  }
 
-    get(){
-        return favorites.getItem('favorites');
-    }
-
-    update(items){
-        favorites.setItem('favorites', JSON.stringify(items));
-    }
+  update(items) {
+    favorites.setItem("favorites", JSON.stringify(items));
+  }
 }

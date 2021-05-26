@@ -1,36 +1,36 @@
 class SearchPage {
-    container = document.getElementById("container");
+  container = document.getElementById("container");
 
-    renderForm(){
-        let title = document.createElement('h3');
-        title.innerText = "Search";
-        
-        container.appendChild(title);
+  renderForm() {
+    let title = document.createElement("h3");
+    title.innerText = "Search";
 
-        let form = document.createElement('form');
-        form.id = "searchForm"; 
+    container.appendChild(title);
 
-        let input = createSearchInput();
-        form.appendChild(input);
+    let form = document.createElement("form");
+    form.id = "searchForm";
 
-        let button = document.createElement('button');
-        button.type = "submit";
-        button.id = "search";
-        button.textContent = "Submit";
-        form.appendChild(button);
+    let input = createSearchInput();
+    form.appendChild(input);
 
-        container.appendChild(form);
+    let button = document.createElement("button");
+    button.type = "submit";
+    button.id = "search";
+    button.textContent = "Submit";
+    form.appendChild(button);
+
+    container.appendChild(form);
+  }
+
+  renderTable(results) {
+    const table = container.getElementsByTagName("table")[0];
+    if (table) {
+      table.remove();
     }
-    
-    renderTable(results){
-        const table = container.getElementsByTagName('table')[0];
-        if (table) {
-            table.remove();
-        }
 
-        if(results.length > 0){
-            let table = createTable(results);
-            container.appendChild(table);
-        }
+    if (results.length > 0) {
+      let table = createTable(results);
+      container.appendChild(table);
     }
+  }
 }

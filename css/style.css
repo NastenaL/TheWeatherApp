@@ -1,32 +1,32 @@
 .container {
-    min-width: 1600px;
-    min-height: 1200px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #04AA6D;
-    padding: 10px;
+  min-width: 1600px;
+  min-height: 1200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #04aa6d;
+  padding: 10px;
 }
 
 nav {
-    position:absolute;
-    bottom:0;
+  position: absolute;
+  bottom: 0;
 }
 
 tr:hover {
-    cursor: pointer;
-    background-color: #04AA6D;
+  cursor: pointer;
+  background-color: #04aa6d;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 #tile {
-height: 150px;
-width: 150px;
-background:#04AA6D;
-text-align: center;
-float: left;
-margin-right: 10px;
-margin-bottom: 10px;
+  height: 150px;
+  width: 150px;
+  background: #04aa6d;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
