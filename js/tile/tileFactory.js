@@ -46,13 +46,7 @@ class TileFactory {
  
     createTileContainer() {
         let container = document.createElement('div');
-        container.style.height = '150px';
-        container.style.width = '150px';
-        container.style.background = '#04AA6D';
-        container.style.textAlign = 'center';
-        container.style.float = 'left';
-        container.style.marginRight = '10px';
-        container.style.marginBottom = '10px';
+        container.id = 'tile';
         return container;
     }
 }

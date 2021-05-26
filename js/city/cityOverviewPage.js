@@ -12,6 +12,8 @@ class CityOverviewPage {
         console.log(data);
         const currentCity = new City(data, id);
         
+        console.log(currentCity);
+
         [createTop, createCenter, createFooter].forEach(fn =>{
             const sectionContainer = fn(currentCity);
             container.appendChild(sectionContainer);
@@ -20,8 +22,8 @@ class CityOverviewPage {
 }
 
 let createTop = (currentCity) => {
-    let topDiv = document.createElement('div');
-    topDiv.id = "top";
+    let top = document.createElement('div');
+    top.id = "top";
     let localTime = document.createElement('p');
     localTime.innerText = currentCity.localTime;
 
@@ -37,19 +39,21 @@ let createTop = (currentCity) => {
     addToFavorites.className = "favorite";
     addToFavorites.textContent = "Add to favorites";
 
-    topDiv.appendChild(localTime);
-    topDiv.appendChild(coordinates);
-    topDiv.appendChild(timezone);
-    topDiv.appendChild(addToFavorites);
-    return topDiv;
+    top.appendChild(localTime);
+    top.appendChild(coordinates);
+    top.appendChild(timezone);
+    top.appendChild(addToFavorites);
+    return top;
 }
 
 let createCenter = (currentCity) => {
 
-    let centerDiv = document.createElement('div');
-    centerDiv.id = "center";
+    let center = document.createElement('div');
+    center.id = "center";
 
     let weatherIcon = document.createElement('img');
+    weatherIcon.style.width = '30px';
+    weatherIcon.style.height = '30px';
     weatherIcon.src = `http://openweathermap.org/img/wn/${currentCity.iconCode}@2x.png`;
 
     let title = document.createElement('h3');
@@ -57,13 +61,13 @@ let createCenter = (currentCity) => {
     Title: ${currentCity.title},`;
 
     let subTitle = document.createElement('h3');
-    subTitle.innerText += `Subtitle: Low 10, Wind west at 11.124 kph`;
+    subTitle.innerText += `Subtitle: Low 10, Wind ${currentCity.windDegree} at ${currentCity.windSpeed} kph`;
 
-    centerDiv.appendChild(title);
-    centerDiv.appendChild(weatherIcon);
-    centerDiv.appendChild(subTitle);
+    title.appendChild(weatherIcon);
+    center.appendChild(title);
+    center.appendChild(subTitle);
 
-    return centerDiv;
+    return center;
 }
 
 

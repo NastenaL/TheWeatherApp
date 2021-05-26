@@ -1,6 +1,7 @@
+const DEBOUNCE_TIME = 500;
+
 function debounce() {
     timeoutId = null;
-    DEBOUNCE_TIME = 500;
 
     return {
         init() {

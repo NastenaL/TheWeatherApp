@@ -13,6 +13,8 @@ dewPoint;
 id;
 iconCode;
 timezone_offset;
+windDeg;
+windSpeed;
 
     constructor(data, id) {
         this.id = id;
@@ -28,6 +30,8 @@ timezone_offset;
         this.pressure = `${data.current.pressure} mb`; 
         this.dewPoint = `${data.current.dew_point} ℃`;
         this.iconCode = data.current.weather[0].icon;
+        this.windDeg = data.current.wind_deg;
+        this.windSpeed = data.current.wind_speed;
     }
 
     get localTime(){
@@ -42,6 +46,11 @@ timezone_offset;
         let gtm = this.timezone_offset / 3600;
         if(gtm > 0) gtm = '+' + gtm;
         return `GTM ${gtm}`;
+    }
+
+    get windDegree(){
+        console.log(WindDirection.getDirection(this.windDeg));
+        return WindDirection.getDirection(this.windDeg);
     }
 
     get visibility(){

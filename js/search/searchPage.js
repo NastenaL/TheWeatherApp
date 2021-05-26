@@ -23,19 +23,14 @@ class SearchPage {
     }
     
     renderTable(results){
-        if (container.getElementsByTagName('table')[0]) {
-            container.getElementsByTagName('table')[0].remove();
+        const table = container.getElementsByTagName('table')[0];
+        if (table) {
+            table.remove();
         }
 
         if(results.length > 0){
             let table = createTable(results);
             container.appendChild(table);
         }
-
     }
-
-    renderCityPage(cityId){
-        alert(cityId);
-    }
-
 }
