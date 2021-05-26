@@ -1,4 +1,4 @@
-class Fetch {
+class OpenWeatherApp {
     async getCurrent(item) {
       const myKey = "c53d07090596c4b22fd92015cd6a8ced";
       let coord = item.city.coord;

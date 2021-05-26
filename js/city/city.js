@@ -12,10 +12,10 @@ visibility;
 pressure;
 dewPoint;
 id;
-isFavorite;
 iconCode;
 
-    constructor(data) {
+    constructor(data, id) {
+        this.id = id;
         this.localTime = convertedTimeZone(data.timezone_offset);
         this.longitude = data.lon;
         this.latitude = data.lat;
