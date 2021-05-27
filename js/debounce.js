@@ -6,12 +6,15 @@ function debounce() {
   return {
     init() {
       return new Promise((resolve) => {
+        //LOad...
+
         if (timeoutId !== null) {
           clearTimeout(timeoutId);
         }
 
         timeoutId = setTimeout(() => {
           resolve();
+          //.....
         }, DEBOUNCE_TIME);
       });
     },

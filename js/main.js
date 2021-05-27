@@ -1,10 +1,9 @@
 let searchResults = [];
 const searchRenderer = new SearchPage();
 const MAX_ITEM_COUNT = 15;
+let cities = [];
 
 searchRenderer.renderPage(searchResults);
-
-let cities = [];
 
 function loadCities(list) {
   cities = list;

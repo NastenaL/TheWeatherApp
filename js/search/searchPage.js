@@ -1,3 +1,5 @@
+const tableRenderer = new TableRenderer();
+
 class SearchPage {
   container = document.getElementById("container");
 
@@ -10,7 +12,7 @@ class SearchPage {
     let form = document.createElement("form");
     form.id = "searchForm";
 
-    let input = createSearchInput();
+    let input = this.createSearchInput();
 
     setTimeout(function () {
       input.focus();
@@ -30,6 +32,15 @@ class SearchPage {
     container.appendChild(message);
   }
 
+  createSearchInput = () => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = "cityName";
+    input.minlength = 1;
+    input.maxlength = 20;
+    return input;
+  };
+
   renderTable(results) {
     const table = container.getElementsByTagName("table")[0];
     if (table) {
@@ -37,7 +48,7 @@ class SearchPage {
     }
 
     if (results.length > 0) {
-      let table = createTable(results);
+      let table = tableRenderer.createTable(results);
       container.appendChild(table);
     }
   }
