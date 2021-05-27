@@ -9,7 +9,7 @@ class CityOverviewPage {
 
     let data = await ft.getCurrent(city);
     console.log(data);
-    const currentCity = new City(data, id);
+    const currentCity = new CityModel(data, id);
 
     [createTop, createCenter, createFooter].forEach((fn) => {
       const sectionContainer = fn(currentCity);

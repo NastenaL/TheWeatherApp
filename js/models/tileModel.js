@@ -1,4 +1,4 @@
-class Tile {
+class TileModel {
   icon;
   title;
   value;

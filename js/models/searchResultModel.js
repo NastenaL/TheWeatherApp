@@ -1,4 +1,4 @@
-class SearchResult {
+class SearchResultModel {
   constructor(city, isFavorite) {
     this.city = city;
     this.isFavorite = isFavorite;

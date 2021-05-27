@@ -1,4 +1,4 @@
-class City {
+class CityModel {
   longitude;
   latitude;
   title;

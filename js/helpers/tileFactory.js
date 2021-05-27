@@ -1,27 +1,31 @@
 class TileFactory {
   create(currentCity) {
-    let feelsLike = new Tile(
+    let feelsLike = new TileModel(
       "img/thermometer.png",
       "Feels like",
       currentCity.feelsLike
     );
-    let humidity = new Tile(
+
+    let humidity = new TileModel(
       "img/humidity.png",
       "Humidity",
       currentCity.humidity
     );
-    let uvIndex = new Tile("img/sun.png", "UV index", currentCity.uvIndex);
-    let visibility = new Tile(
+
+    let uvIndex = new TileModel("img/sun.png", "UV index", currentCity.uvIndex);
+
+    let visibility = new TileModel(
       "img/visibility.png",
       "Visibility",
       currentCity.visibility
     );
-    let dewPoint = new Tile(
+
+    let dewPoint = new TileModel(
       "img/dew-point.png",
       "Dew Point",
       currentCity.dewPoint
     );
-    let pressure = new Tile(
+    let pressure = new TileModel(
       "img/pressure.png",
       "Pressure",
       currentCity.pressure
