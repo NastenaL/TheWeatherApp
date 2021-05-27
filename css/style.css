@@ -7,11 +7,6 @@
   padding: 10px;
 }
 
-nav {
-  position: absolute;
-  bottom: 0;
-}
-
 tr:hover {
   cursor: pointer;
   background-color: #04aa6d;

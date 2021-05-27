@@ -2,8 +2,7 @@ let searchResults = [];
 const searchRenderer = new SearchPage();
 const MAX_ITEM_COUNT = 15;
 
-searchRenderer.renderForm();
-searchRenderer.renderTable(searchResults);
+searchRenderer.renderPage(searchResults);
 
 let cities = [];
 
@@ -11,9 +10,8 @@ function loadCities(list) {
   cities = list;
 }
 
-let cityName = document.getElementById("cityName");
-
-cityName.addEventListener("input", (event) => {
+let searchForm = document.getElementById("searchForm");
+searchForm.addEventListener("submit", (event) => {
   debounce()
     .init()
     .then(() => {
@@ -27,6 +25,7 @@ let onSearchByName = () => {
     let searchedCities = cities.filter((city) =>
       city.name.includes(cityName.value)
     );
+    console.log(searchedCities);
     setResult(searchedCities);
     let partialSearchResults = searchResults
       .sort((item1, item2) => {
@@ -41,11 +40,6 @@ let onSearchByName = () => {
       .slice(0, MAX_ITEM_COUNT);
 
     searchRenderer.renderTable(partialSearchResults);
-
-    let searchForm = document.getElementById("searchForm");
-    searchForm.addEventListener("submit", function () {
-      onSearchByName();
-    });
   }
 };
 

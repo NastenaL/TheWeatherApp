@@ -22,9 +22,13 @@ let createTop = (currentCity) => {
   let top = document.createElement("div");
   top.id = "top";
 
-  let localTime = document.createElement("p");
-  localTime.id = "txt";
-  localTime.innerText = currentCity.localTime;
+  let localTime = document.createElement("h2");
+
+  let clock = new Clock(currentCity.timezone_offset);
+
+  setInterval(() => {
+    localTime.innerText = clock.getTime();
+  }, 1000);
 
   let coordinates = document.createElement("h4");
   coordinates.innerText = `Coordinates:

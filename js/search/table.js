@@ -14,7 +14,6 @@ let createTable = (searchResults) => {
   let headerRow = createHeader();
 
   table.appendChild(headerRow);
-
   searchResults.forEach((item) => {
     let row = createRow(item);
     table.appendChild(row);

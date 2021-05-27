@@ -11,6 +11,11 @@ class SearchPage {
     form.id = "searchForm";
 
     let input = createSearchInput();
+
+    setTimeout(function () {
+      input.focus();
+    }, 5000);
+
     form.appendChild(input);
 
     let button = document.createElement("button");
@@ -19,7 +24,10 @@ class SearchPage {
     button.textContent = "Submit";
     form.appendChild(button);
 
+    let message = document.createElement("h3");
+
     container.appendChild(form);
+    container.appendChild(message);
   }
 
   renderTable(results) {
@@ -32,5 +40,10 @@ class SearchPage {
       let table = createTable(results);
       container.appendChild(table);
     }
+  }
+
+  renderPage(searchResults) {
+    this.renderForm();
+    this.renderTable(searchResults);
   }
 }
