@@ -18,7 +18,7 @@ searchForm.addEventListener("submit", (event) => {
     });
 });
 
-function filter(letter) {
+function searchCitiesByName(letter) {
   var results = [];
   if (letter.length >= 1) {
     cities.forEach((city) => {
@@ -28,21 +28,27 @@ function filter(letter) {
   return results;
 }
 
+function filterCities(searchedCities) {
+  let filtered = searchedCities.sort((item1, item2) => {
+    const {
+      city: { name: cityName1 },
+    } = item1;
+    const {
+      city: { name: cityName2 },
+    } = item2;
+    return cityName1 > cityName2 ? 1 : cityName1 == cityName2 ? 0 : -1;
+  });
+  return filtered;
+}
+
 let onSearchByName = () => {
-  const searchedCities = filter(cityName.value);
+  const searchedCities = searchCitiesByName(cityName.value);
 
   setResult(searchedCities);
-  let partialSearchResults = searchResults
-    .sort((item1, item2) => {
-      const {
-        city: { name: cityName1 },
-      } = item1;
-      const {
-        city: { name: cityName2 },
-      } = item2;
-      return cityName1 > cityName2 ? 1 : cityName1 == cityName2 ? 0 : -1;
-    })
-    .slice(0, MAX_ITEM_COUNT);
+  let partialSearchResults = filterCities(searchResults).slice(
+    0,
+    MAX_ITEM_COUNT
+  );
 
   searchRenderer.renderTable(partialSearchResults);
 };
