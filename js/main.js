@@ -21,6 +21,7 @@ searchForm.addEventListener("submit", (event) => {
 });
 
 const searchAnchor = document.getElementById("searchAnchor");
+const cityName = document.getElementById("cityName");
 searchAnchor.addEventListener("click", () => {
   document.getElementById("container").innerHTML = "";
   searchPage.renderPage(searchResults);
@@ -50,18 +51,19 @@ function filterCities(searchedCities) {
 }
 
 let onSearchByName = () => {
-  const searchedCities = searchCitiesByName(cityName.value);
+  let searchedCities = searchCitiesByName(cityName.value);
 
   setResult(searchedCities);
   let partialSearchResults = filterCities(searchResults).slice(
     0,
     MAX_ITEM_COUNT
   );
-
+  console.log(partialSearchResults);
   searchPage.renderTable(partialSearchResults);
 };
 
 let setResult = (data) => {
+  searchResults = [];
   data.forEach((item) => {
     let searchResult = new SearchResultModel();
     searchResult.city = item;
