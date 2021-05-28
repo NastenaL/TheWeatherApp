@@ -1,10 +1,10 @@
 let searchResults = [];
-const searchRenderer = new SearchPage();
+const searchPage = new SearchPage();
 const anchor = new Anchor();
 const MAX_ITEM_COUNT = 15;
 let cities = [];
 
-searchRenderer.renderPage(searchResults);
+searchPage.renderPage(searchResults);
 anchor.addAnchor("search");
 
 function loadCities(list) {
@@ -18,6 +18,12 @@ searchForm.addEventListener("submit", (event) => {
     .then(() => {
       onSearchByName();
     });
+});
+
+const searchAnchor = document.getElementById("searchAnchor");
+searchAnchor.addEventListener("click", () => {
+  document.getElementById("container").innerHTML = "";
+  searchPage.renderPage(searchResults);
 });
 
 function searchCitiesByName(letter) {
@@ -52,7 +58,7 @@ let onSearchByName = () => {
     MAX_ITEM_COUNT
   );
 
-  searchRenderer.renderTable(partialSearchResults);
+  searchPage.renderTable(partialSearchResults);
 };
 
 let setResult = (data) => {

@@ -4,6 +4,7 @@ const container = document.getElementById("container");
 
 class CityOverviewPage {
   static async render(id) {
+    anchor.addAnchor("city" + id);
     container.innerHTML = "";
     let city = searchResults.find((item) => item.city.id === id);
 

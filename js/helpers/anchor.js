@@ -2,9 +2,8 @@ class Anchor {
   addAnchor(anchor) {
     let url = window.location.href;
 
-    if (!window.location.hash) {
-      url += "#" + anchor;
-    }
+    url = url.replace(window.location.hash, "");
+    url += "#" + anchor;
     window.open(url, "_self");
   }
 
